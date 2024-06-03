@@ -25,6 +25,11 @@ export interface initialValues {
 	zip: string;
 }
 
+export interface fetchResponse {
+	code: number;
+	description: string;
+}
+
 const FormSchema = Yup.object().shape({
 	email: Yup.string()
 		.email("Please enter a valid email")
@@ -71,6 +76,9 @@ const CustomizedStepper = styled(Stepper)(({ theme }) => ({
 export default function FormStepper() {
 	const [activeStep, setActiveStep] = useState(0);
 	const [showAddressStep, setShowAddressStep] = useState(false);
+	const [fetchResponse, setFetchResponse] = useState<fetchResponse | null>(
+		null
+	);
 
 	const handleNext = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -82,6 +90,7 @@ export default function FormStepper() {
 
 	const handleReset = () => {
 		setActiveStep(0);
+		setFetchResponse(null);
 	};
 
 	return (
@@ -104,6 +113,13 @@ export default function FormStepper() {
 				validateOnChange
 				onSubmit={(values) => {
 					console.log(values);
+					const requestOptions = {
+						method: "POST",
+						headers: { Accept: "application/json" },
+					};
+					fetch("https://httpstat.us/random/201,500", requestOptions)
+						.then((response) => response.json())
+						.then((data) => setFetchResponse(data));
 				}}
 			>
 				{({
@@ -333,6 +349,30 @@ export default function FormStepper() {
 									</Button>
 								)}
 							</Paper>
+						)}
+						{fetchResponse?.code === 201 && (
+							<Box sx={{ mt: 2 }}>
+								<Typography variant='h6' color='#8080C1'>
+									<p>Thank you for completing our form!</p>
+									<p>Your information has been submitted.</p>
+								</Typography>
+							</Box>
+						)}
+
+						{fetchResponse?.code === 500 && (
+							<Box sx={{ mt: 2 }}>
+								<Typography variant='h6' color='red'>
+									<p>Oops--there was a problem!</p>
+								</Typography>
+								<Typography variant='h6' color='#8080C1'>
+									<p>
+										Let's try that again. Please review your info and resubmit
+									</p>
+								</Typography>
+								<Button className='reviewButton' onClick={handleReset}>
+									Review & Edit
+								</Button>
+							</Box>
 						)}
 					</Form>
 				)}
