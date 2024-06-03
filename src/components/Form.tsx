@@ -1,79 +1,22 @@
 import { useState } from "react";
 
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 
 import { Formik, Field, Form } from "formik";
-import * as Yup from "yup";
 
-export interface initialValues {
-	email: string;
-	password: string;
-	firstName: string;
-	lastName: string;
-	dob: string;
-	address: string;
-	city: string;
-	state: string;
-	zip: string;
-}
+import {
+	FormSchema,
+	CustomizedStepper,
+} from "./form-stepper/FormStepper.config";
+import { initialValues, fetchResponse } from "../types";
 
-export interface fetchResponse {
-	code: number;
-	description: string;
-}
-
-const FormSchema = Yup.object().shape({
-	email: Yup.string()
-		.email("Please enter a valid email")
-		.required("This field is required"),
-	password: Yup.string()
-		.required("This field is required")
-		.min(8, "Pasword must be 8 or more characters")
-		.matches(/\d/, "Password should contain at least one number")
-		.matches(
-			/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-			"Password should contain at least one special character"
-		),
-	firstName: Yup.string().required("This field is required"),
-	lastName: Yup.string().required("This field is required"),
-	dob: Yup.date()
-		.required("This field is required")
-		.max(new Date(), "Your birthday must be in the past"),
-});
-
-const CustomizedStepper = styled(Stepper)(({ theme }) => ({
-	"& .MuiButton-root.Mui-disabled": {
-		background: "#F6F4F4",
-		color: "rgba(0, 0, 0, 0.26)",
-	},
-	"& .MuiButton-root": {
-		background: "#49C5CB",
-		color: "#F6F4F4",
-		"&:hover": {
-			background: "#8080C1",
-		},
-	},
-	"& .MuiStepLabel-root": {
-		"& .MuiStepLabel-iconContainer": {
-			"& .Mui-active": {
-				color: "#8080C1",
-			},
-			"& .Mui-completed": {
-				color: "#8080C1",
-			},
-		},
-	},
-}));
-
-export default function FormStepper() {
+export default function UserForm() {
 	const [activeStep, setActiveStep] = useState(0);
 	const [showAddressStep, setShowAddressStep] = useState(false);
 	const [fetchResponse, setFetchResponse] = useState<fetchResponse | null>(
@@ -126,8 +69,6 @@ export default function FormStepper() {
 					errors,
 					touched,
 					values,
-					isValid,
-					handleBlur,
 					handleChange,
 					handleSubmit,
 					validateForm,
