@@ -43,3 +43,7 @@ Note: this project requires [Node.js](https://nodejs.org/en/) to run
 3. Use `npm install` in that directory to install dependencies
 4. Use `npm run start` to spin up your dev server and run the app
 5. Navigate to `http://localhost:3000/` in a browser to see the app
+
+![step 1](./src/images/Step1.png)
+![step 2](./src/images/Step2.png)
+![step 3](./src/images/Step3.png)
