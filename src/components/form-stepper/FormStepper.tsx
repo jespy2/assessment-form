@@ -216,6 +216,7 @@ export default function FormStepper(props: IFormStepperProps) {
 										<div className='input-container'>
 											<label htmlFor='address'>Address</label>
 											<Field
+												id='address'
 												type='text'
 												name='address'
 												value={values.address}
@@ -225,6 +226,7 @@ export default function FormStepper(props: IFormStepperProps) {
 										<div className='input-container'>
 											<label htmlFor='city'>City</label>
 											<Field
+												id='city'
 												type='text'
 												name='city'
 												value={values.city}
@@ -234,6 +236,7 @@ export default function FormStepper(props: IFormStepperProps) {
 										<div className='input-container'>
 											<label htmlFor='state'>State</label>
 											<Field
+												id='state'
 												type='text'
 												name='state'
 												value={values.state}
@@ -243,6 +246,7 @@ export default function FormStepper(props: IFormStepperProps) {
 										<div className='input-container'>
 											<label htmlFor='zip'>Zip</label>
 											<Field
+												id='zip'
 												type='text'
 												name='zip'
 												value={values.zip}
