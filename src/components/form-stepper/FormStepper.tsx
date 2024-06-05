@@ -71,6 +71,7 @@ export default function FormStepper(props: IFormStepperProps) {
 									<div className='input-container'>
 										<label htmlFor='email'>Email</label>
 										<Field
+											id='email'
 											type='email'
 											name='email'
 											value={values.email}
@@ -83,6 +84,7 @@ export default function FormStepper(props: IFormStepperProps) {
 									<div className='input-container'>
 										<label htmlFor='password'>Password</label>
 										<Field
+											id='password'
 											type='password'
 											name='password'
 											value={values.password}
@@ -127,6 +129,7 @@ export default function FormStepper(props: IFormStepperProps) {
 									<div className='input-container'>
 										<label htmlFor='firstName'>First name</label>
 										<Field
+											id='firstName'
 											type='text'
 											name='firstName'
 											value={values.firstName}
@@ -139,6 +142,7 @@ export default function FormStepper(props: IFormStepperProps) {
 									<div className='input-container'>
 										<label htmlFor='lastName'>Last Name</label>
 										<Field
+											id='lastName'
 											type='text'
 											name='lastName'
 											value={values.lastName}
@@ -151,6 +155,7 @@ export default function FormStepper(props: IFormStepperProps) {
 									<div className='input-container'>
 										<label htmlFor='dob'>Date of Birth</label>
 										<Field
+											id='dob'
 											type='date'
 											name='dob'
 											value={values.dob}
