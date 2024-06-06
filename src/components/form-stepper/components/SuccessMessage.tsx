@@ -8,8 +8,7 @@ export default function SuccessMessage( {handleReset}: { handleReset?: () => voi
 			<Typography variant='h6' color='#8080C1'>
 				<p>Thank you for completing our form!</p>
 				<p>Your information has been submitted.</p>
-      </Typography>
-      
+      </Typography>      
 			<Typography variant='h6' color='#49C5CB'>
 				<p>That was awesome--I want to do it again!</p>
       </Typography>

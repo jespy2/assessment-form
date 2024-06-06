@@ -1,4 +1,3 @@
-import React from 'react';
 import Stepper from './components/Stepper';
 import './App.css';
 
@@ -11,8 +10,7 @@ function App() {
       </header>
       <div className="App-container">
       <Stepper />
-      </div>
-      
+      </div>      
     </div>
   );
 }

@@ -14,7 +14,6 @@ import { FormSchema, CustomizedStepper } from "./FormStepper.config";
 import { initialValues, IFormStepperProps } from "../../types";
 import useFetch from "../../hooks/useFetch";
 
-
 export default function FormStepper(props: IFormStepperProps) {
   const { activeStep, handleNext, handleBack, handleReset, setFetchResponse } = props;
 	const [showAddressStep, setShowAddressStep] = useState(false);
