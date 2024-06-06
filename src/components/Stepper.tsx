@@ -8,7 +8,7 @@ import FailureMessage from "./form-stepper/components/FailureMessage";
 
 import { fetchResponse } from "../types";
 
-export default function UserForm() {
+export default function Stepper() {
 	const [activeStep, setActiveStep] = useState(0);
 	const [fetchResponse, setFetchResponse] = useState<fetchResponse | null>(
 		null

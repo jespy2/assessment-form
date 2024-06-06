@@ -11,18 +11,15 @@ import Typography from "@mui/material/Typography";
 import { Formik, Field, Form } from "formik";
 
 import { FormSchema, CustomizedStepper } from "./FormStepper.config";
-import { initialValues, fetchResponse } from "../../types";
+import { initialValues, IFormStepperProps } from "../../types";
+import useFetch from "../../hooks/useFetch";
 
-export interface IFormStepperProps {
-  activeStep: number;
-  handleNext: () => void;
-  handleBack: () => void;
-  handleReset: () => void;
-  setFetchResponse: (value: fetchResponse | null) => void;
-}
+
 export default function FormStepper(props: IFormStepperProps) {
   const { activeStep, handleNext, handleBack, handleReset, setFetchResponse } = props;
 	const [showAddressStep, setShowAddressStep] = useState(false);
+	const url = "https://httpstat.us/random/201,500";
+	const [data] = useFetch(url);
 
 	return (
 		<Box sx={{ maxWidth: 400 }}>
@@ -43,14 +40,7 @@ export default function FormStepper(props: IFormStepperProps) {
 				validationSchema={FormSchema}
 				validateOnChange
 				onSubmit={(values) => {
-					console.log(values);
-					const requestOptions = {
-						method: "POST",
-						headers: { Accept: "application/json" },
-					};
-					fetch("https://httpstat.us/random/201,500", requestOptions)
-						.then((response) => response.json())
-						.then((data) => setFetchResponse(data));
+					setFetchResponse(data);
 				}}
 			>
 				{({

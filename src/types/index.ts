@@ -14,3 +14,11 @@ export interface fetchResponse {
 	code: number;
 	description: string;
 }
+
+export interface IFormStepperProps {
+  activeStep: number;
+  handleNext: () => void;
+  handleBack: () => void;
+  handleReset: () => void;
+  setFetchResponse: (value: fetchResponse | null) => void;
+}

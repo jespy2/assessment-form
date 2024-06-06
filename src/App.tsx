@@ -1,5 +1,5 @@
 import React from 'react';
-import Stepper from './components/UserForm';
+import Stepper from './components/Stepper';
 import './App.css';
 
 function App() {
